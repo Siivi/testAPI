@@ -1,14 +1,13 @@
 <?php
 
-    $host = "localhost";
-    $user = "root";
-    $psw = "";
-    $dbname = "api";
+$host = "localhost";
+$user = "root";
+$psw = "";
+$dbname = "api";
 
-    $dsn = "mysql:host=$host; dbname=$dbname";
-    $options = array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION);
+$conn = new mysqli($host, $user, $psw, $dbname);
+mysqli_set_charset($conn, 'utf8');
 
-    function escape($html)
-{
-    return htmlspecialchars($html, ENT_QUOTES | ENT_SUBSTITUTE, "UTF-8");
+if ($conn->connect_error) {
+  die("Connection failed: " . $conn->connect_error);
 }
